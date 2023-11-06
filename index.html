@@ -19,7 +19,7 @@
     window.onload = function() {
         // Build a system
         const ui = SwaggerUIBundle({
-            url: "<enter url to swagger.json here>",
+            url: "https://petstore.swagger.io/v2/swagger.json",
             dom_id: '#swagger-ui',
             deepLinking: true,
             presets: [
@@ -30,7 +30,10 @@
                 SwaggerUIBundle.plugins.DownloadUrl
             ],
             layout: "StandaloneLayout",
-            urls: [{ url: "json/api.json", name: "Apigee Proxy [Apigee Products]" }, { url: "json/product.json", name: "Apigee Products" }],
+            urls: [{ url: "json/api.json", name: "Apigee Proxy [Apigee Products]" },
+                   { url: "json/product.json", name: "Apigee Products" },
+                   { url: "json/service.json", name: "Apigee Services" },
+                  ],
         })
         window.ui = ui
     }
