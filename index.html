@@ -21,6 +21,13 @@
                     plugins: [
                         SwaggerUIBundle.plugins.DownloadUrl
                     ],
+                    layout: "StandaloneLayout",
+                    urls: [{ url: "json/api.json", name: "Apigee Proxy [Apigee Products]" },{ url: "json/product.json", name: "Apigee Product" }],
+                    queryConfigEnabled: true,
+                    filter: "true",
+                    docExpansion: "none",
+                    showExtensions: true,
+
                 })
                 window.ui = ui
             }
