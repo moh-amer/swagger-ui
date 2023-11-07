@@ -1,5 +1,0 @@
-defaults:
-  - scope:
-      path: ""
-    values:
-      cache-control: "no-store, must-revalidate"
