@@ -18,6 +18,17 @@
 
     window.onload = function() {
         // Build a system
+        // extract keyword(stage , service , api , )
+        let pathname = window.location.pathname;
+        let path_arr = pathname.split("/").filter((str) => str !== '');
+
+         let custom_urls =  [{ url: "json/api.json", name: "Apigee Proxy [Apigee Products]" },
+                      { url: "json/product.json", name: "Apigee Products" },
+                  ];
+
+        if (path_arr[1] == "test"){
+            customr_urls.push({ url: "json/service.json", name: "Apigee Services" })
+        }
         const ui = SwaggerUIBundle({
             url: "https://petstore.swagger.io/v2/swagger.json",
             dom_id: '#swagger-ui',
@@ -30,10 +41,7 @@
                 SwaggerUIBundle.plugins.DownloadUrl
             ],
             layout: "StandaloneLayout",
-            urls: [{ url: "json/api.json", name: "Apigee Proxy [Apigee Products]" },
-                   { url: "json/product.json", name: "Apigee Products" },
-                   { url: "json/service.json", name: "Apigee Services" },
-                  ],
+            urls: custom_urls,
         })
         window.ui = ui
         
