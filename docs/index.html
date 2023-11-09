@@ -27,8 +27,8 @@
 
         switch (path_arr[1]) {
             case "api":
-            custom_urls.push([{ url: "json/group.json", name: "Service Group" },
-                        { url: "json/service.json", name: "Service Name" }]);
+            custom_urls.push({ url: "json/group.json", name: "Service Group" },
+                        { url: "json/service.json", name: "Service Name" });
                 break;
         
             case "service":
@@ -36,8 +36,8 @@
                 break;
             case "stage":
                         custom_urls.splice(0,0,{ url: "json/stage.json", name: "Stage" });
-                        custom_urls.push([{ url: "json/group.json", name: "Service Group" },
-                        { url: "json/service.json", name: "Service Name" }]);
+                        custom_urls.push({ url: "json/group.json", name: "Service Group" },
+                        { url: "json/service.json", name: "Service Name" });
                 break;
             default:
                 break;
