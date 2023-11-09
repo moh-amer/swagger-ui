@@ -17,7 +17,6 @@
 <script>
 
     window.onload = function() {
-        // Build a system
         // extract keyword(stage , service , api )
         let pathname = window.location.pathname;
         let path_arr = pathname.split("/").filter((str) => str !== '');
@@ -28,8 +27,8 @@
 
         switch (path_arr[1]) {
             case "api":
-            custom_urls.push([{ url: "json/group.json", name: "Service Group" },
-                        { url: "json/service.json", name: "Service Name" }]);
+            custom_urls.push({ url: "json/group.json", name: "Service Group" },
+                        { url: "json/service.json", name: "Service Name" });
                 break;
         
             case "service":
@@ -37,15 +36,13 @@
                 break;
             case "stage":
                         custom_urls.splice(0,0,{ url: "json/stage.json", name: "Stage" });
-                        custom_urls.push([{ url: "json/group.json", name: "Service Group" },
-                        { url: "json/service.json", name: "Service Name" }]);
+                        custom_urls.push({ url: "json/group.json", name: "Service Group" },
+                        { url: "json/service.json", name: "Service Name" });
                 break;
             default:
                 break;
         }
-        if (path_arr[1] == "test"){
-            customr_urls.push({ url: "json/service.json", name: "Apigee Services" })
-        }
+
         const ui = SwaggerUIBundle({
             url: "https://petstore.swagger.io/v2/swagger.json",
             dom_id: '#swagger-ui',
