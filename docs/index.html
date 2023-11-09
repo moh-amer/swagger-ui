@@ -17,15 +17,31 @@
 <script>
 
     window.onload = function() {
-        // Build a system
-        // extract keyword(stage , service , api , )
+        // extract keyword(stage , service , api )
         let pathname = window.location.pathname;
         let path_arr = pathname.split("/").filter((str) => str !== '');
 
          let custom_urls =  [{ url: "json/api.json", name: "Apigee Proxy [Apigee Products]" },
-                      { url: "json/product.json", name: "Apigee Products" },
+                      { url: "json/product.json", name: "Apigee Product [Apigee Apps]" },
                   ];
 
+        switch (path_arr[1]) {
+            case "api":
+            custom_urls.push([{ url: "json/group.json", name: "Service Group" },
+                        { url: "json/service.json", name: "Service Name" }]);
+                break;
+        
+            case "service":
+            custom_urls.splice(0,0,{ url: "json/service.json", name: "Service Name" })
+                break;
+            case "stage":
+                        custom_urls.splice(0,0,{ url: "json/stage.json", name: "Stage" });
+                        custom_urls.push([{ url: "json/group.json", name: "Service Group" },
+                        { url: "json/service.json", name: "Service Name" }]);
+                break;
+            default:
+                break;
+        }
         if (path_arr[1] == "test"){
             customr_urls.push({ url: "json/service.json", name: "Apigee Services" })
         }
@@ -47,7 +63,6 @@
         
     }
 
-    console.log(window.location.pathname);
 </script>
 </body>
 </html>
