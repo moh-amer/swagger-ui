@@ -18,12 +18,12 @@
 
     window.onload = function() {
         // extract keyword(stage , service , api )
-        let pathname = window.location.pathname;
-        let path_arr = pathname.split("/").filter((str) => str !== '');
+        let path_arr = window.location.pathname.split("/").filter((str) => str !== '');
 
-         let custom_urls =  [{ url: "json/api.json", name: "Apigee Proxy [Apigee Products]" },
+        let custom_urls =  [{ url: "json/api.json", name: "Apigee Proxy [Apigee Products]" },
                       { url: "json/product.json", name: "Apigee Product [Apigee Apps]" },
                   ];
+        let home = "json/api.json";
 
         switch (path_arr[1]) {
             case "api":
@@ -33,17 +33,21 @@
         
             case "service":
             custom_urls.splice(0,0,{ url: "json/service.json", name: "Service Name" })
+            home = "json/service.json";
                 break;
             case "stage":
-                        custom_urls.splice(0,0,{ url: "json/stage.json", name: "Stage" });
-                        custom_urls.push({ url: "json/group.json", name: "Service Group" },
+            custom_urls.splice(0,0,{ url: "json/stage.json", name: "Stage" });
+            custom_urls.push({ url: "json/group.json", name: "Service Group" },
                         { url: "json/service.json", name: "Service Name" });
+
+            home = "json/stage.json";
                 break;
             default:
                 break;
         }
+
         const ui = SwaggerUIBundle({
-            url: "https://petstore.swagger.io/v2/swagger.json",
+            url: home,
             dom_id: '#swagger-ui',
             deepLinking: true,
             presets: [
